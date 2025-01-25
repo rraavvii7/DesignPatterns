@@ -15,6 +15,10 @@ namespace DesignPatterns
 
 		//only temporary employee are eligible
 		public decimal MedicalAllowance { get; set; }
+
+		public string JobDescription { get; set; }
+
+		public string ComputerDetails { get; set; }
 	}
 }
 

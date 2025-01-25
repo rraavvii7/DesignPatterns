@@ -14,6 +14,11 @@
     <None Remove="Creational\SimpleFactory\" />
     <None Remove="Creational\FactoryMethodDesignPattern\" />
     <None Remove="Creational\Singleton\" />
+    <None Remove="Creational\AbstractFactoryDesignPattern\" />
+    <None Remove="Creational\AbstractFactoryDesignPattern\AbstractProduct\" />
+    <None Remove="Creational\AbstractFactoryDesignPattern\ConcreteProduct\" />
+    <None Remove="Creational\AbstractFactoryDesignPattern\ConcreteFactory\" />
+    <None Remove="Creational\AbstractFactoryDesignPattern\AbstractInterface\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Creational\" />
@@ -22,5 +27,10 @@
     <Folder Include="Creational\SimpleFactory\" />
     <Folder Include="Creational\FactoryMethodDesignPattern\" />
     <Folder Include="Creational\Singleton\" />
+    <Folder Include="Creational\AbstractFactoryDesignPattern\" />
+    <Folder Include="Creational\AbstractFactoryDesignPattern\AbstractProduct\" />
+    <Folder Include="Creational\AbstractFactoryDesignPattern\ConcreteProduct\" />
+    <Folder Include="Creational\AbstractFactoryDesignPattern\ConcreteFactory\" />
+    <Folder Include="Creational\AbstractFactoryDesignPattern\AbstractInterface\" />
   </ItemGroup>
 </Project>

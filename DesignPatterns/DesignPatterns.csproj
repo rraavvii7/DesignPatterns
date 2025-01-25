@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Creational\" />
+    <None Remove="Structural\" />
+    <None Remove="Behavioural\" />
+    <None Remove="Creational\SimpleFactory\" />
+    <None Remove="Creational\FactoryMethodDesignPattern\" />
+    <None Remove="Creational\Singleton\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Creational\" />
+    <Folder Include="Structural\" />
+    <Folder Include="Behavioural\" />
+    <Folder Include="Creational\SimpleFactory\" />
+    <Folder Include="Creational\FactoryMethodDesignPattern\" />
+    <Folder Include="Creational\Singleton\" />
+  </ItemGroup>
+</Project>

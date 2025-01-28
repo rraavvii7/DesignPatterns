@@ -21,7 +21,6 @@
     <None Remove="Creational\AbstractFactoryDesignPattern\AbstractInterface\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Creational\" />
     <Folder Include="Structural\" />
     <Folder Include="Behavioural\" />
     <Folder Include="Creational\SimpleFactory\" />

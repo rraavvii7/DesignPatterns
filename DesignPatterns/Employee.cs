@@ -19,6 +19,8 @@ namespace DesignPatterns
 		public string JobDescription { get; set; }
 
 		public string ComputerDetails { get; set; }
+
+		public string SystemConfigurationDetails { get; set; }
 	}
 }
 

@@ -1,8 +1,13 @@
-﻿using DesignPatterns;
+﻿using System.Collections.ObjectModel;
+using DesignPatterns;
 using DesignPatterns.Creational;
 using DesignPatterns.Creational.AbstractFactoryDesignPattern;
+using DesignPatterns.Creational.BuilderDesignPattern;
+using DesignPatterns.Creational.BuilderDesignPattern.ConcreteBuilder;
+using DesignPatterns.Creational.BuilderDesignPattern.Director;
 using DesignPatterns.Creational.FactoryMethodDesignPattern;
 using DesignPatterns.Creational.SimpleFactory;
+using static DesignPatterns.Creational.AbstractFactoryDesignPattern.Enumerations;
 
 // CREATIONAL DESIGN PATTERN
 
@@ -71,5 +76,53 @@ Console.WriteLine("Employee Type : {0}, Job Description : {1}, System Details : 
 
 Console.WriteLine("---------------------------------------");
 
-
+// Builder design pattern
+var employees = new List<Employee>
+{
+    emp1,emp2,emp3,emp4
+};
+ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+foreach (var employee in employees)
+{
+    if (employee.ComputerDetails.Contains(ComputerType.Laptop.ToString()))
+    {
+        IBuilder laptopBuilder = new LaptopBuilder();
+        configurationBuilder.BuildSystem(laptopBuilder, new ReadOnlyDictionary<string, string>
+            (
+                new Dictionary<string, string>
+                {
+                    { "RAM", "8"},
+                    { "HDD", "500 GB"},
+                    { "Touchscreen", "Enabled" },
+                    { "KeyboardType", "" },
+                    { "MouseType", "" }
+                }
+            ));
+        var systemDetails = laptopBuilder.GetSystem();
+        employee.SystemConfigurationDetails = string.Format("RAM : {0}, HDD : {1}, Touchscreen : {2} ", systemDetails.RAM, systemDetails.HDD, systemDetails.TouchScreen);
+    }
+    else if (employee.ComputerDetails.Contains(ComputerType.Desktop.ToString()))
+    {
+        IBuilder desktopBuilder = new DesktopBuilder();
+        configurationBuilder.BuildSystem(desktopBuilder, new ReadOnlyDictionary<string, string>
+           (
+               new Dictionary<string, string>
+               {
+                    { "RAM", "16"},
+                    { "HDD", "1 TB"},
+                    { "KeyboardType", "Wireless" },
+                    { "MouseType", "Wireless" },
+                    { "Touchscreen", "" },
+               }
+           ));
+        var systemDetails = desktopBuilder.GetSystem();
+        employee.SystemConfigurationDetails = string.Format("RAM : {0}, HDD : {1}, Keyboard : {2}, Mouse : {3} ", systemDetails.RAM, systemDetails.HDD, systemDetails.Keyboard, systemDetails.Mouse);
+    }
+}
+foreach (var employee in employees)
+{
+    Console.WriteLine("Employee Type : {0}, Job Description : {1}, System Details : {2}, System Configuration : {3}",
+        employee.EmployeeType, employee.JobDescription, employee.ComputerDetails, employee.SystemConfigurationDetails);
+}
+Console.WriteLine("---------------------------------------");
 Console.ReadLine();

@@ -7,11 +7,11 @@ namespace DesignPatterns.Creational.BuilderDesignPattern.Director
     {
         public void BuildSystem(IBuilder builder, ReadOnlyDictionary<string, string> collection)
         {
-            builder.AddHDD(collection["HDD"]);
-            builder.AddMemory(collection["RAM"]);
-            builder.AddTouchscreen(collection["Touchscreen"]);
-            builder.AddKeyboard(collection["KeyboardType"]);
-            builder.AddMouse(collection["MouseType"]);
+            builder.AddHDD(collection.GetValueOrDefault("HDD", string.Empty));
+            builder.AddMemory(collection.GetValueOrDefault("RAM", string.Empty));
+            builder.AddTouchscreen(collection.GetValueOrDefault("Touchscreen", string.Empty));
+            builder.AddKeyboard(collection.GetValueOrDefault("KeyboardType", string.Empty));
+            builder.AddMouse(collection.GetValueOrDefault("MouseType", string.Empty));
         }
     }
 }

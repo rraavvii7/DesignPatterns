@@ -19,6 +19,10 @@
     <None Remove="Creational\AbstractFactoryDesignPattern\ConcreteProduct\" />
     <None Remove="Creational\AbstractFactoryDesignPattern\ConcreteFactory\" />
     <None Remove="Creational\AbstractFactoryDesignPattern\AbstractInterface\" />
+    <None Remove="Creational\FluentBuilderDesignPattern\" />
+    <None Remove="Creational\FluentBuilderDesignPattern\ConcreteBuilder\" />
+    <None Remove="Creational\FluentBuilderDesignPattern\Director\" />
+    <None Remove="Creational\FluentBuilderDesignPattern\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Structural\" />
@@ -31,5 +35,9 @@
     <Folder Include="Creational\AbstractFactoryDesignPattern\ConcreteProduct\" />
     <Folder Include="Creational\AbstractFactoryDesignPattern\ConcreteFactory\" />
     <Folder Include="Creational\AbstractFactoryDesignPattern\AbstractInterface\" />
+    <Folder Include="Creational\FluentBuilderDesignPattern\" />
+    <Folder Include="Creational\FluentBuilderDesignPattern\ConcreteBuilder\" />
+    <Folder Include="Creational\FluentBuilderDesignPattern\Director\" />
+    <Folder Include="Creational\FluentBuilderDesignPattern\Product\" />
   </ItemGroup>
 </Project>

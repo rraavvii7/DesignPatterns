@@ -40,4 +40,7 @@
     <Folder Include="Creational\FluentBuilderDesignPattern\Director\" />
     <Folder Include="Creational\FluentBuilderDesignPattern\Product\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

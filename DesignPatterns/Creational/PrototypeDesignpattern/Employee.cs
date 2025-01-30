@@ -1,7 +1,7 @@
 ﻿
 namespace DesignPatterns.Creational.PrototypeDesignpattern
 {
-    public partial class Employee
+    public partial class Employee : CloneablePrototype<Employee>
     {
         public string ID { get; set; }
         public string Name { get; set; }
@@ -9,14 +9,6 @@ namespace DesignPatterns.Creational.PrototypeDesignpattern
         public override string ToString()
         {
             return string.Format("ID : {0}, Name : {1}, DepartmentID : {2}, Address : {3}", ID, Name, DepartmentID, AddressDetails?.ToString());
-        }
-    }
-
-    public partial class Employee : ICloneable
-    {
-        public object Clone()
-        {
-            return this.MemberwiseClone();
         }
     }
 

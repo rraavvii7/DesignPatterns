@@ -179,8 +179,8 @@ Console.WriteLine("---------------------------------------");
 
 // Prototype Design Pattern
 
-Helper.ShallowCopy();
-Helper.ShallowCopyRef();
+Helper.PrototypeClone();
+
 
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

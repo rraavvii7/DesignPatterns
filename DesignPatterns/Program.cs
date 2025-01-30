@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using DesignPatterns;
+using Employee = DesignPatterns.Employee;
 using DesignPatterns.Creational;
 using DesignPatterns.Creational.AbstractFactoryDesignPattern;
 using DesignPatterns.Creational.BuilderDesignPattern;
@@ -11,6 +11,7 @@ using DesignPatterns.Creational.SimpleFactory;
 using static DesignPatterns.Creational.AbstractFactoryDesignPattern.Enumerations;
 using FluentConfigurationBuilder = DesignPatterns.Creational.FluentBuilderDesignPattern.Director.ConfigurationBuilder;
 using FluentBuilder = DesignPatterns.Creational.FluentBuilderDesignPattern.ConcreteBuilder;
+using DesignPatterns.Creational.PrototypeDesignpattern;
 
 // CREATIONAL DESIGN PATTERN
 
@@ -174,5 +175,12 @@ foreach (var employee in employees)
     Console.WriteLine("Employee Type : {0}, Job Description : {1}, System Details : {2}, System Configuration : {3}",
         employee.EmployeeType, employee.JobDescription, employee.ComputerDetails, employee.SystemConfigurationDetails);
 }
+Console.WriteLine("---------------------------------------");
+
+// Prototype Design Pattern
+
+Helper.ShallowCopy();
+Helper.ShallowCopyRef();
+
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

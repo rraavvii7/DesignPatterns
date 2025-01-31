@@ -14,10 +14,13 @@ using FluentBuilder = DesignPatterns.Creational.FluentBuilderDesignPattern.Concr
 using DesignPatterns.Creational.PrototypeDesignpattern;
 using DesignPatterns.Structural.AdapterDesignPattern.Target;
 using DesignPatterns.Structural.AdapterDesignPattern.Adaptor;
+using DesignPatterns.Structural.BridgeDesignPattern.Abstraction;
+using DesignPatterns.Structural.BridgeDesignPattern.RefinedAbstraction;
+using DesignPatterns.Structural.BridgeDesignPattern.ConcreteImplementor;
 
-// CREATIONAL DESIGN PATTERN
+// ******************************************************* CREATIONAL DESIGN PATTERN *******************************************************
 
-// Singleton
+// ----------------------------------------------------------- Singleton -----------------------------------------------------------
 
 Parallel.Invoke(
     () => Singleton.Instance.DoSomething(),
@@ -25,7 +28,7 @@ Parallel.Invoke(
 );
 Console.WriteLine("---------------------------------------");
 
-// Simple Factory
+// ----------------------------------------------------------- Simple Factory -----------------------------------------------------------
 
 var factory = new EmployeeFactory();
 var pEmployee = factory.GetEmployee(EmployeeType.Permanent);
@@ -35,7 +38,7 @@ Console.WriteLine("Employee type : {0}, Hourly Pay : {1}, Bonus : {2}", Employee
 
 Console.WriteLine("---------------------------------------");
 
-// Factory method design pattern
+// ----------------------------------------------------------- Factory method design pattern -----------------------------------------------------------
 
 var tempEmployee = (new ComplexEmployeeFactory(new Employee())).GetEmployeeFactory(EmployeeType.Temporary).CalculateHourlyPayAndBonus();
 var permEmployee = (new ComplexEmployeeFactory(new Employee())).GetEmployeeFactory(EmployeeType.Permanent).CalculateHourlyPayAndBonus();
@@ -48,7 +51,7 @@ Console.WriteLine("Employee type : {0}, Hourly Pay : {1}, Bonus : {2}, House Ren
 
 Console.WriteLine("---------------------------------------");
 
-// Abstract factory design pattern
+// ----------------------------------------------------------- Abstract factory design pattern -----------------------------------------------------------
 
 var emp1 = new Employee
 {
@@ -83,7 +86,7 @@ Console.WriteLine("Employee Type : {0}, Job Description : {1}, System Details : 
 
 Console.WriteLine("---------------------------------------");
 
-// Builder design pattern
+// ----------------------------------------------------------- Builder design pattern -----------------------------------------------------------
 
 var employees = new List<Employee>
 {
@@ -131,7 +134,7 @@ foreach (var employee in employees)
 }
 Console.WriteLine("---------------------------------------");
 
-// Fluent Builder Design Pattern
+// ----------------------------------------------------------- Fluent Builder Design Pattern -----------------------------------------------------------
 
 employees.ForEach(e => e.SystemConfigurationDetails = string.Empty);
 employees.ForEach(e => Console.WriteLine(e.SystemConfigurationDetails+ "No system configuration detail found for "+ e.ToString()));
@@ -179,18 +182,42 @@ foreach (var employee in employees)
 }
 Console.WriteLine("---------------------------------------");
 
-// Prototype Design Pattern
+// ----------------------------------------------------------- Prototype Design Pattern -----------------------------------------------------------
 
 Helper.PrototypeClone();
 
 Console.WriteLine("---------------------------------------");
 
 
-// STRUCTURAL DESIGN PATTERN
+// ******************************************************* STRUCTURAL DESIGN PATTERN *******************************************************
 
-// Adaptor Design Pattern
+// ----------------------------------------------------------- Adaptor Design Pattern -----------------------------------------------------------
+
 ICompany company = new CompanyAdaptor();
 var jsonValues = company.GetAllCompanies();
+Console.WriteLine(jsonValues);
+
+Console.WriteLine("---------------------------------------");
+
+// ----------------------------------------------------------- Bridge design pattern -----------------------------------------------------------
+
+// depending on the end customer choice one can select card payment or net banking payment
+Payment order = new CardPayment();
+
+// depending on the availability of payment gateway (logic) one can choose citibank payment gateway or idbi payment gateway
+order.paymentSystem = new CitibankPaymentSystem();
+
+order.MakePayment();
+
+order.paymentSystem = new IDBIPaymentSystem();
+order.MakePayment();
+
+order = new NetbankingPayment();
+order.paymentSystem = new CitibankPaymentSystem();
+order.MakePayment();
+
+order.paymentSystem = new IDBIPaymentSystem();
+order.MakePayment();
 
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

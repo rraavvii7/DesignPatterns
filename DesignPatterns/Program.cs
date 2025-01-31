@@ -12,6 +12,8 @@ using static DesignPatterns.Creational.AbstractFactoryDesignPattern.Enumerations
 using FluentConfigurationBuilder = DesignPatterns.Creational.FluentBuilderDesignPattern.Director.ConfigurationBuilder;
 using FluentBuilder = DesignPatterns.Creational.FluentBuilderDesignPattern.ConcreteBuilder;
 using DesignPatterns.Creational.PrototypeDesignpattern;
+using DesignPatterns.Structural.AdapterDesignPattern.Target;
+using DesignPatterns.Structural.AdapterDesignPattern.Adaptor;
 
 // CREATIONAL DESIGN PATTERN
 
@@ -181,6 +183,14 @@ Console.WriteLine("---------------------------------------");
 
 Helper.PrototypeClone();
 
+Console.WriteLine("---------------------------------------");
+
+
+// STRUCTURAL DESIGN PATTERN
+
+// Adaptor Design Pattern
+ICompany company = new CompanyAdaptor();
+var jsonValues = company.GetAllCompanies();
 
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

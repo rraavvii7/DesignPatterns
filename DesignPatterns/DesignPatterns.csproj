@@ -25,7 +25,6 @@
     <None Remove="Creational\FluentBuilderDesignPattern\Product\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Structural\" />
     <Folder Include="Behavioural\" />
     <Folder Include="Creational\SimpleFactory\" />
     <Folder Include="Creational\FactoryMethodDesignPattern\" />

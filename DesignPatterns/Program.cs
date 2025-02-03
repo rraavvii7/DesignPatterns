@@ -17,7 +17,9 @@ using DesignPatterns.Structural.AdapterDesignPattern.Adaptor;
 using DesignPatterns.Structural.BridgeDesignPattern.Abstraction;
 using DesignPatterns.Structural.BridgeDesignPattern.RefinedAbstraction;
 using DesignPatterns.Structural.BridgeDesignPattern.ConcreteImplementor;
-
+using ICompositeEmployee = DesignPatterns.Structural.CompositeDesignPattern.Component.IEmployee;
+using CompositeEmployee = DesignPatterns.Structural.CompositeDesignPattern.Leaf.Employee;
+using DesignPatterns.Structural.CompositeDesignPattern.Composite;
 // ******************************************************* CREATIONAL DESIGN PATTERN *******************************************************
 
 // ----------------------------------------------------------- Singleton -----------------------------------------------------------
@@ -218,6 +220,39 @@ order.MakePayment();
 
 order.paymentSystem = new IDBIPaymentSystem();
 order.MakePayment();
+
+Console.WriteLine("---------------------------------------");
+
+
+// ----------------------------------------------------------- Composite design pattern -----------------------------------------------------------
+
+// leaf
+ICompositeEmployee John = new CompositeEmployee("John", "HR");
+ICompositeEmployee Mary = new CompositeEmployee("Mary", "HR");
+ICompositeEmployee Sam = new CompositeEmployee("Sam", "HR");
+
+ICompositeEmployee Andrew = new CompositeEmployee("Andrew", "IT");
+ICompositeEmployee Scott = new CompositeEmployee("Scott", "IT");
+
+// composite
+ICompositeEmployee Sarath = new Manager("Sarath", "IT")
+{
+    SubOrdinates = new List<ICompositeEmployee> { Andrew, Scott }
+};
+ICompositeEmployee Vishal = new Manager("Vishal", "HR")
+{
+    SubOrdinates = new List<ICompositeEmployee> { John, Mary, Sam }
+};
+
+
+ICompositeEmployee Ranjan = new Manager("Ranjan", "Head")
+{
+    SubOrdinates = new List<ICompositeEmployee> { Sarath, Vishal }
+};
+
+Ranjan.GetDetails(1);
+
+
 
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

@@ -24,6 +24,7 @@ using DesignPatterns.Structural.DecoratorDesignPattern.Decorator;
 using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteDecorator;
 using DesignPatterns.Structural.DecoratorDesignPattern.Component;
 using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteComponent;
+using DesignPatterns.Structural.FacadeDesignPattern.ShoppingFacade;
 // ******************************************************* CREATIONAL DESIGN PATTERN *******************************************************
 
 // ----------------------------------------------------------- Singleton -----------------------------------------------------------
@@ -265,7 +266,19 @@ Console.WriteLine(string.Format("Car Name : {0}, Price : {1}, Discounted Price :
 var hyundai = new Hyndai();
 carDecorator = new OfferPrice(hyundai);
 Console.WriteLine(string.Format("Car Name : {0}, Price : {1}, Discounted Price : {2}", carDecorator.Make, carDecorator.GetPrice(), carDecorator.GetDiscountedPrice(0.7)));
+Console.WriteLine("---------------------------------------");
+ 
 
+//----------------------------------------------------------- Facade design pattern -----------------------------------------------------------
+IUserOrder userOrder = new UserOrder();
+Console.WriteLine("Facade : Start");
+Console.WriteLine("************************************");
+int cartID = userOrder.AddToCart(10, 1);
+int userID = 1234;
+Console.WriteLine("************************************");
+int orderID = userOrder.PlaceOrder(cartID, userID);
+Console.WriteLine("************************************");
+Console.WriteLine("Facade : End CartID = {0}, OrderID = {1}",cartID, orderID);
 
 Console.WriteLine("---------------------------------------");
 Console.ReadLine();

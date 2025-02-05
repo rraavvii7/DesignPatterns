@@ -25,6 +25,9 @@ using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteDecorator;
 using DesignPatterns.Structural.DecoratorDesignPattern.Component;
 using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteComponent;
 using DesignPatterns.Structural.FacadeDesignPattern.ShoppingFacade;
+using Microsoft.Extensions.DependencyInjection;
+using DesignPatterns.Structural.FlyweightDesignPattern;
+using ICar = DesignPatterns.Structural.DecoratorDesignPattern.Component.ICar;
 // ******************************************************* CREATIONAL DESIGN PATTERN *******************************************************
 
 // ----------------------------------------------------------- Singleton -----------------------------------------------------------
@@ -259,6 +262,7 @@ Ranjan.GetDetails(1);
 Console.WriteLine("---------------------------------------");
 
 //----------------------------------------------------------- Decorator design pattern -----------------------------------------------------------
+
 ICar suzuki = new Suzuki();
 CarDecorator carDecorator = new OfferPrice(suzuki);
 Console.WriteLine(string.Format("Car Name : {0}, Price : {1}, Discounted Price : {2}", carDecorator.Make, carDecorator.GetPrice(), carDecorator.GetDiscountedPrice(0.8)));
@@ -270,6 +274,7 @@ Console.WriteLine("---------------------------------------");
  
 
 //----------------------------------------------------------- Facade design pattern -----------------------------------------------------------
+
 IUserOrder userOrder = new UserOrder();
 Console.WriteLine("Facade : Start");
 Console.WriteLine("************************************");
@@ -281,4 +286,26 @@ Console.WriteLine("************************************");
 Console.WriteLine("Facade : End CartID = {0}, OrderID = {1}",cartID, orderID);
 
 Console.WriteLine("---------------------------------------");
+
+//----------------------------------------------------------- Flyweight design pattern -----------------------------------------------------------
+
+var services = new ServiceCollection();
+services.AddSingleton<ICarManager[]>(new CarManager[]
+{
+    new CarManager(CarFactory.Instance, "Bmw"),
+    new CarManager(CarFactory.Instance, "Bmw"),
+    new CarManager(CarFactory.Instance, "Audi"),
+    new CarManager(CarFactory.Instance, "Audi"),
+});
+var serviceProvider = services.BuildServiceProvider();
+var carManagers = serviceProvider.GetRequiredService<ICarManager[]>();
+decimal lat = 1;
+decimal lon = 1;
+foreach(var carManager in carManagers)
+{
+    carManager.SetLocation(lat++, lon++);
+}
+
+Console.WriteLine("---------------------------------------");
+
 Console.ReadLine();

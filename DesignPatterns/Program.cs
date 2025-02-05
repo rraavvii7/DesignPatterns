@@ -20,6 +20,10 @@ using DesignPatterns.Structural.BridgeDesignPattern.ConcreteImplementor;
 using ICompositeEmployee = DesignPatterns.Structural.CompositeDesignPattern.Component.IEmployee;
 using CompositeEmployee = DesignPatterns.Structural.CompositeDesignPattern.Leaf.Employee;
 using DesignPatterns.Structural.CompositeDesignPattern.Composite;
+using DesignPatterns.Structural.DecoratorDesignPattern.Decorator;
+using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteDecorator;
+using DesignPatterns.Structural.DecoratorDesignPattern.Component;
+using DesignPatterns.Structural.DecoratorDesignPattern.ConcreteComponent;
 // ******************************************************* CREATIONAL DESIGN PATTERN *******************************************************
 
 // ----------------------------------------------------------- Singleton -----------------------------------------------------------
@@ -251,7 +255,16 @@ ICompositeEmployee Ranjan = new Manager("Ranjan", "Head")
 };
 
 Ranjan.GetDetails(1);
+Console.WriteLine("---------------------------------------");
 
+//----------------------------------------------------------- Decorator design pattern -----------------------------------------------------------
+ICar suzuki = new Suzuki();
+CarDecorator carDecorator = new OfferPrice(suzuki);
+Console.WriteLine(string.Format("Car Name : {0}, Price : {1}, Discounted Price : {2}", carDecorator.Make, carDecorator.GetPrice(), carDecorator.GetDiscountedPrice(0.8)));
+
+var hyundai = new Hyndai();
+carDecorator = new OfferPrice(hyundai);
+Console.WriteLine(string.Format("Car Name : {0}, Price : {1}, Discounted Price : {2}", carDecorator.Make, carDecorator.GetPrice(), carDecorator.GetDiscountedPrice(0.7)));
 
 
 Console.WriteLine("---------------------------------------");
